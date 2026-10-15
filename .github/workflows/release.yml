@@ -1,0 +1,35 @@
+name: Build Release
+
+env:
+  BUILD_TYPE: Release
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build on Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake ninja-build
+
+      - name: Configure CMake
+        run: bash scripts/linux-configure.sh
+
+      - name: Build MPanel
+        run: bash scripts/linux-build.sh
