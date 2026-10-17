@@ -1,11 +1,11 @@
 # Workflows
-## Build
+## Build App
 Location: ```.github/workflows/build.yml```
 * **Runs:** Every commit
 * **Objective:** Look for compilation errors
 * **Generates:** ```build/MPanel/MPanel-linux-x86_64```
 
-## Release
+## Publish Release
 Location: ```.github/workflows/release.yml```
 * **Runs:** When new tag is created (starting with v*)
 * **Objective:** Attach Binary to the Release
