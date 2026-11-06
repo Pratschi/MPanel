@@ -1,33 +1,27 @@
 # Compiling on Linux
 ## Dependencies
-* `GCC` 7.1+ (9.0+ recommended)
-* `CMake` 3.20+
-* `Ninja` 1.10+
-
-## Installation
-* **Debian:** `sudo apt install build-essential cmake ninja-build`
-* **Arch:** `sudo pacman -Syu --needed gcc cmake ninja`
-* **Fedora:** `sudo dnf install gcc-c++ cmake ninja-build`
+* System Dependencies:
+    * `GCC` 7.1+ (9.0+ recommended)
+    * `CMake` 3.20+
+    * `Ninja` 1.10+
+* C++ Libraries
+    * `yaml-cpp`
 
 ## Compilation
 Run `scripts/linux-configure.sh` to configure the environment.
 
 Run `scripts/linux-build.sh` to compile and build the project to `builds/MPanel`.
 
-
-
-<br><br><br>
+<br><br>
 
 # Compiling with WSL (Windows)
 Install the `Windows Subsystem for Linux` (WSL) using the [Official WSL Installation Guide](https://learn.microsoft.com/windows/wsl/install).
 
 Install your preferred Linux distribution, and then, follow the [Linux Compilation Guide](#compiling-on-linux).
 
+<br><br>
 
-
-<br><br><br>
-
-# Compiling with Docker (Linux/Windows/MacOS)
+# Compiling with Docker (Windows/Linux/MacOS)
 ## Dependencies
 * Docker App
 * `WSL` / `Hyper-V` (If on Windows)
@@ -47,7 +41,7 @@ This will create an Ubuntu 24.04 Docker Image with all the required dependencies
 ## Compilation
 We'll use the same scripts as the Linux installation.
 
-Configure the ºcompilation environment using:
+Configure the compilation environment using:
 ```
 docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/src" -w /src mpanel-builder bash scripts/linux-configure.sh
 ```
