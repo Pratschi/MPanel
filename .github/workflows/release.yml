@@ -44,4 +44,5 @@ jobs:
         run: |
           gh release create "$GITHUB_REF_NAME" dist/* \
             --title "MPanel $GITHUB_REF_NAME" \
+            --notes "$(cat CURRENT_CHANGELOG.md)" \
             --generate-notes
