@@ -3,8 +3,7 @@ name: Publish Release
 
 on:
   push:
-    tags:
-      - "v*"
+    tags: ["v*"]
 
 permissions:
   contents: write
@@ -44,5 +43,5 @@ jobs:
         run: |
           gh release create "$GITHUB_REF_NAME" dist/* \
             --title "MPanel $GITHUB_REF_NAME" \
-            --notes "$(cat CURRENT_CHANGELOG.md)" \
-            --generate-notes
+            --generate-notes \
+            --draft
