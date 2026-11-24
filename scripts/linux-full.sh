@@ -6,13 +6,9 @@ ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 echo -e "[INFO] Configuring..."
 "$ROOT"/scripts/linux-configure.sh
 echo -e "[INFO] Building..."
-"$ROOT"/scripts/linux-build.sh
+"$ROOT"/scripts/linux-build.sh --clean
 
 clear
-
-echo -e "[INFO] Cleaning..."
-mv "$ROOT/build/MPanel" "$ROOT/"
-rm -rf "$ROOT/build/"
 
 echo -e "===== PROGRAM RUNNING ====="
 "$ROOT"/MPanel
