@@ -11,23 +11,34 @@ int main(int argc, char* argv[]) {
     cout << "See https://mpanel.com/ for more information.\n\n";
 
     int PORT;
+    str phpPath = "php";
     bool askForPort = true;
     for (int i = 1; i < argc; ++i) {
         str curr_arg = argv[i];
-        if (curr_arg == "--port" && argc >= i+1) {
+        if (curr_arg == "--port") {
+            if (!argc >= i+1) {
+                cerr << "ERROR: --port argument requires a value (<PORT>).\n";
+            }
             try {
                 if (askForPort == false) {
-                    cerr << "ERROR: Declared --port <value> more than one time.\n";
+                    cerr << "ERROR: Declared --port <PORT> more than one time.\n";
                     return 1;
                 }
                 PORT = std::stoi(argv[++i]);
                 askForPort = false;
             } catch (...) {
-                cerr << "ERROR: Invalid --port <value> (must be an integer).\n";
+                cerr << "ERROR: Invalid --port <PORT> (must be an integer).\n";
                 return 1;
             }
+        } else if (curr_arg == "--custom-php") {
+            if (!argc >= i+1) {
+                cerr << "ERROR: --custom-php argument requires a value (<PATH>).\n";
+                return 1;
+            }
+
+            phpPath = argv[++i];
         } else {
-            cerr << "Usage: MPanel [--port PORT]\n";
+            cerr << "Usage: MPanel [--port PORT] [--custom-php PATH]\n";
             return 1;
         }
     }
@@ -38,17 +49,26 @@ int main(int argc, char* argv[]) {
         std::getline(std::cin, input);
 
         if (input.empty()) {
-        std::cerr << "Please specify a port!\n";
-        return 1;
-    }
+            std::cerr << "Please specify a port!\n";
+            return 1;
+        }
+
+        PORT = std::stoi(input);
     }
 
     if (PORT < 1 || PORT > 65535) {
-        cout << "Invalid port number. Please enter a value between 1 and 65535.\n";
+        cout << "ERROR: Invalid port number. Please enter a value between 1 and 65535.\n";
         return 1;
     }
     
-    cout << "Starting server on port :" << PORT << "...\n";
+    cout << "Starting server on port :" << PORT << "...\n\n";
+
+    int phpStatus = std::system("php --version >/dev/null 2>&1");
+    if (phpStatus != 0) {
+        cerr << "ERROR: Could not access PHP (is it installed and in PATH?).";
+        cout << "To use a custom PHP Path, use --custom-php <PATH>.\n";
+        return 1;
+    }
 
     str command = "php -S 0.0.0.0:" + std::to_string(PORT) + " -t web web/router.php";
 
