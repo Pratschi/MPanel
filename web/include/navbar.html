@@ -1,0 +1,43 @@
+<!-- NAVBAR -->
+
+<style>
+.site-navbar {
+    align-items: center;
+    background-color: #102a56;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+.site-navbar__brand,
+.site-navbar__links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.site-navbar__brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.site-navbar__links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-navbar__links a:hover {
+    font-weight: 700;
+}
+</style>
+
+<nav class="site-navbar" aria-label="Main navigation">
+    <a class="site-navbar__brand" href="/">MPanel</a>
+    <ul class="site-navbar__links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+</nav>
