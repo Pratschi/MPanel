@@ -40,6 +40,7 @@ jobs:
           path: build/MPanel
           if-no-files-found: error
           retention-days: 14
+
   build-windows:
     name: Build on Windows
     runs-on: windows-2025
@@ -49,15 +50,12 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Configure CMake
-        shell: pwsh
-        run: |
-          Remove-Item -Recurse -Force build -ErrorAction SilentlyContinue
-          cmake -S . -B build -G Ninja `
-            -DCMAKE_BUILD_TYPE=Release `
-            -DCMAKE_EXE_LINKER_FLAGS="-static -static-libgcc -static-libstdc++"
+        shell: cmd
+        run: call scripts\windows-configure.bat
 
       - name: Build MPanel
-        run: cmake --build build --config Release
+        shell: cmd
+        run: call scripts\windows-build.bat
 
       - name: Upload Windows Binary
         uses: actions/upload-artifact@v7
