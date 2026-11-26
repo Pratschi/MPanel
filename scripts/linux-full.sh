@@ -10,5 +10,5 @@ echo -e "[INFO] Building..."
 
 clear
 
-echo -e "===== PROGRAM RUNNING ====="
-"$ROOT"/MPanel
+echo -e "[INFO] Compilation Complete."
+"$ROOT"/MPanel --version
