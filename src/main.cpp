@@ -7,9 +7,13 @@ int main(int argc, char* argv[]) {
     using std::cerr;
     typedef std::string str;
 
-    str const VERSION = "v0.1.1";
+    str const VERSION = "0.1.1";
 
-    cout << "MPanel Service Utility - v0.1\n";
+    if (argc == 1 && argv[1] == "--version") {
+
+    }
+
+    cout << "MPanel Service Utility - v" + VERSION + "\n";
     cout << "See https://mpanel.com/ for more information.\n\n";
 
     int DEBUGMODE = false;
@@ -18,7 +22,7 @@ int main(int argc, char* argv[]) {
     bool askForPort = true;
 
     for (int i = 1; i < argc; ++i) {
-        if (std::string(argv[i]) == "--debug") {
+        if (str(argv[i]) == "--debug") {
             if (!DEBUGMODE) {
                 cout << "===== DEBUG MODE ENABLED ===\n";
                 DEBUGMODE = true;
@@ -26,6 +30,9 @@ int main(int argc, char* argv[]) {
                 cerr << "ERROR: Declared --debug more than one time.\n";
                 return 1;
             }
+        } else if (str(argv[i]) == "--version") {
+            cerr << "ERROR: --version parameter must not be used with any more parameters.";
+            return 1;
         }
     }
 
