@@ -10,5 +10,6 @@ A Service and App for Windows/Linux Servers that allows for their easy managemen
 <br>
 
 **Get more information about:**
+* **Usage:** `docs/Usage.md`
 * **Compilation:** `docs/Compilation.md`
 * **Github Workflows:** `docs/Workflows.md`

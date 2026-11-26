@@ -1,12 +1,12 @@
 # Workflows
 ## Build App
-Location: ```.github/workflows/build.yml```
+Location: `.github/workflows/build.yml`
 * **Runs:** Every commit
 * **Objective:** Look for compilation errors
-* **Generates:** ```build/MPanel/MPanel-linux-x86_64```
+* **Generates:** `MPanel-linux-x86_64`, `MPanel-windows-x86_64.exe`
 
 ## Publish Release
-Location: ```.github/workflows/release.yml```
+Location: `.github/workflows/release.yml`
 * **Runs:** When new tag is created (starting with v*)
-* **Objective:** Attach Binary to the Release
-* **Generates:** Release with Full Changelog, source and ```MPanel-linux-x86_64```
+* **Objective:** Create Github Release draft and Attach Binaries
+* **Generates:** Release Draft with Pre-Generated Changelog, with `MPanel-linux-x86_64` and `MPanel-windows-x86_64.exe` attached.

@@ -8,6 +8,10 @@
 compile_commands.json# Prerequisites
 *.d
 
+# Executables
+MPanel-linux-*
+MPanel-windows-*.exe
+
 # Compiled Object files
 *.slo
 *.lo
@@ -40,35 +44,12 @@ compile_commands.json# Prerequisites
 *.a
 *.lib
 
-# Executables
-MPanel
-*.exe
-
-# Build directories
-build/
-Build/
-build-*/
-
 # CMake generated files
 CMakeFiles/
 CMakeCache.txt
-cmake_install.cmake
-Makefile
-install_manifest.txt
-compile_commands.json
 
 # Temporary files
 *.tmp
 *.log
 *.bak
 *.swp
-
-# vcpkg
-vcpkg_installed/
-
-# debug information files
-*.dwo
-
-# test output & cache
-Testing/
-.cache/
