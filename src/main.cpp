@@ -11,12 +11,13 @@
 #endif
 
 void reportError(const std::string& message) {
-    std::cerr << message << '\n';
+    using namespace std;
+    cerr << message << '\n';
 
     if (IS_INTERACTIVE()) {
-        std::cerr << "Press Enter to close...";
-        std::string unused;
-        std::getline(std::cin, unused);
+        cerr << "\nPress Enter to close...";
+        string unused;
+        getline(std::cin, unused);
     }
 }
 
