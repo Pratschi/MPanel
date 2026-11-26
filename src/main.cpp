@@ -1,6 +1,17 @@
 #include <iostream>
 #include <cstdlib>
 
+/* FOR WINDOWS */
+#ifdef _WIN32
+#include <io.h>
+#define IS_INTERACTIVE() (_isatty(_fileno(stdin)))
+#else
+#include <unistd.h>
+#define IS_INTERACTIVE() (isatty(STDIN_FILENO))
+#endif
+
+
+
 int main(int argc, char* argv[]) {
     using std::cout;
     using std::cin;
@@ -75,12 +86,24 @@ int main(int argc, char* argv[]) {
 
     int phpStatus = std::system("php --version >/dev/null 2>&1");
     if (phpStatus != 0) {
-        cerr << "ERROR: Could not access PHP (is it installed and in PATH?).\n";
-        cout << "To use a custom PHP Path, use --custom-php <PATH>.\n";
+        reportError(
+            "ERROR: Could not access PHP (is it installed and in PATH?).\n"
+            "To use a custom PHP path, use --custom-php <PATH>."
+        );
         return 1;
     }
 
     str command = "php -S 0.0.0.0:" + std::to_string(PORT) + " -t web web/router.php";
 
     return std::system(command.c_str());;
+}
+
+void reportError(const std::string& message) {
+    std::cerr << message << '\n';
+
+    if (IS_INTERACTIVE()) {
+        std::cerr << "Press Enter to close...";
+        std::string unused;
+        std::getline(std::cin, unused);
+    }
 }
