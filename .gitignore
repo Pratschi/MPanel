@@ -40,8 +40,9 @@ compile_commands.json# Prerequisites
 *.a
 *.lib
 
-# Executable
+# Executables
 MPanel
+*.exe
 
 # Build directories
 build/
