@@ -3,9 +3,11 @@
 
 /* FOR WINDOWS */
 #ifdef _WIN32
+const std::string nullDevice = "NUL";
 #include <io.h>
 #define IS_INTERACTIVE() (_isatty(_fileno(stdin)))
 #else
+const std::string nullDevice = "/dev/null";
 #include <unistd.h>
 #define IS_INTERACTIVE() (isatty(STDIN_FILENO))
 #endif
@@ -95,7 +97,7 @@ int main(int argc, char* argv[]) {
     
     cout << "Starting server on port :" << PORT << "...\n\n";
 
-    int phpStatus = std::system("php --version >/dev/null 2>&1");
+    int phpStatus = std::system(("\"" + phpPath + "\" --version >" + nullDevice + " 2>&1").c_str());
     if (phpStatus != 0) {
         reportError(
             "ERROR: Could not access PHP (is it installed and in PATH?).\n"
