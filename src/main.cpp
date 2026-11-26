@@ -10,6 +10,16 @@
 #define IS_INTERACTIVE() (isatty(STDIN_FILENO))
 #endif
 
+void reportError(const std::string& message) {
+    std::cerr << message << '\n';
+
+    if (IS_INTERACTIVE()) {
+        std::cerr << "Press Enter to close...";
+        std::string unused;
+        std::getline(std::cin, unused);
+    }
+}
+
 
 
 int main(int argc, char* argv[]) {
@@ -96,14 +106,4 @@ int main(int argc, char* argv[]) {
     str command = "php -S 0.0.0.0:" + std::to_string(PORT) + " -t web web/router.php";
 
     return std::system(command.c_str());;
-}
-
-void reportError(const std::string& message) {
-    std::cerr << message << '\n';
-
-    if (IS_INTERACTIVE()) {
-        std::cerr << "Press Enter to close...";
-        std::string unused;
-        std::getline(std::cin, unused);
-    }
 }
