@@ -42,7 +42,6 @@ compile_commands.json# Prerequisites
 
 # Executable
 MPanel
-*.exe
 
 # Build directories
 build/

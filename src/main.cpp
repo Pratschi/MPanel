@@ -7,31 +7,14 @@ int main(int argc, char* argv[]) {
     using std::cerr;
     typedef std::string str;
 
-    str const VERSION = "v0.1.1";
-
     cout << "MPanel Service Utility - v0.1\n";
     cout << "See https://mpanel.com/ for more information.\n\n";
 
-    int DEBUGMODE = false;
     int PORT;
     str phpPath = "php";
     bool askForPort = true;
-
-    for (int i = 1; i < argc; ++i) {
-        if (std::string(argv[i]) == "--debug") {
-            if (!DEBUGMODE) {
-                cout << "===== DEBUG MODE ENABLED ===\n";
-                DEBUGMODE = true;
-            } else {
-                cerr << "ERROR: Declared --debug more than one time.\n";
-                return 1;
-            }
-        }
-    }
-
     for (int i = 1; i < argc; ++i) {
         str curr_arg = argv[i];
-        if (DEBUGMODE) {cout << "[DEBUG] ARG[" + std::to_string(i) + "] = " + curr_arg;}
         if (curr_arg == "--port") {
             if (!argc >= i+1) {
                 cerr << "ERROR: --port argument requires a value (<PORT>).\n";
@@ -42,7 +25,6 @@ int main(int argc, char* argv[]) {
                     return 1;
                 }
                 PORT = std::stoi(argv[++i]);
-                if (DEBUGMODE) {cout << " <" + std::to_string(PORT) + ">";}
                 askForPort = false;
             } catch (...) {
                 cerr << "ERROR: Invalid --port <PORT> (must be an integer).\n";
@@ -55,13 +37,10 @@ int main(int argc, char* argv[]) {
             }
 
             phpPath = argv[++i];
-        if (DEBUGMODE) {cout << " <" + phpPath + ">";}
-        } else if (curr_arg == "--debug") {
         } else {
             cerr << "Usage: MPanel [--port PORT] [--custom-php PATH]\n";
             return 1;
         }
-        if (DEBUGMODE) {cout << "\n";}
     }
 
     if (askForPort) {
@@ -70,7 +49,7 @@ int main(int argc, char* argv[]) {
         std::getline(std::cin, input);
 
         if (input.empty()) {
-            cerr << "Please specify a port!\n";
+            std::cerr << "Please specify a port!\n";
             return 1;
         }
 
@@ -78,7 +57,7 @@ int main(int argc, char* argv[]) {
     }
 
     if (PORT < 1 || PORT > 65535) {
-        cerr << "ERROR: Invalid port number. Please enter a value between 1 and 65535.\n";
+        cout << "ERROR: Invalid port number. Please enter a value between 1 and 65535.\n";
         return 1;
     }
     
