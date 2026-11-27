@@ -44,7 +44,7 @@ jobs:
 
     steps:
       - name: Download Linux Binary
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: MPanel-linux-x86_64
           path: dist
@@ -55,6 +55,7 @@ jobs:
 
           binary="$GITHUB_WORKSPACE/dist/MPanel-linux-x86_64"
           package_dir="$RUNNER_TEMP/mpanel-package"
+          chmod +x "$binary"
           version_output="$("$binary" --version)"
           version="${version_output#MPanel v}"
           package_file="$GITHUB_WORKSPACE/dist/mpanel_${version}_amd64.deb"
