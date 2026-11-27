@@ -1,0 +1,20 @@
+Origin: MPanel
+Label: MPanel
+Suite: stable
+Codename: stable
+Date: Fri, 27 Nov 2026 11:33:03 UTC
+Architectures: amd64
+Components: main
+Description: MPanel APT repository
+MD5Sum:
+ 6914a68524fe3a18c3c200d2ccbf6b62 421 main/binary-amd64/Packages
+ 9f5fb09856164a0e941443391d8c8613 322 main/binary-amd64/Packages.gz
+ 4a804ad139e59eaa255fa37a871adf64 116 main/binary-amd64/Release
+SHA1:
+ ff80395f691d0562296bd0dce0570bb63a331213 421 main/binary-amd64/Packages
+ bb113f34edf6e1f045eae72c00f6e71ace55f3b6 322 main/binary-amd64/Packages.gz
+ d8d39bd0e466c589bd6e91780abc157182e98f73 116 main/binary-amd64/Release
+SHA256:
+ e4aaa6cc270ef567845f4de20d2c8ca399c4c1454c4d3424cb0db9ee9e67112f 421 main/binary-amd64/Packages
+ a9a306b9a041334604d83c18b1d86a510971bf9e51214f94e837771d386e82f6 322 main/binary-amd64/Packages.gz
+ 57dc536fb167922bfe2d562a7bc945c3c4ced65a3c96ab34f7d4cb3f593dba1e 116 main/binary-amd64/Release

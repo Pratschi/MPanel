@@ -1,0 +1,6 @@
+Archive: stable
+Component: main
+Origin: MPanel
+Label: MPanel
+Architecture: amd64
+Description: MPanel APT repository

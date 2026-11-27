@@ -1,0 +1,8 @@
+Origin: MPanel
+Label: MPanel
+Suite: stable
+Codename: stable
+Architectures: amd64
+Components: main
+Description: MPanel APT repository
+SignWith: 723CF12DB3FE1615E98B26E45C96E6146804991D
