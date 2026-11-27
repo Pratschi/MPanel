@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
     int PORT;
     str phpPath = "";
     str webPath = "";
-    str host = "";
+    str HOST = "";
     bool askForPort = true;
 
 
@@ -117,9 +117,9 @@ int main(int argc, char* argv[]) {
         } else if (curr_arg == "--host") {
             if (!argc >= i+1) {reportError("ERROR: --host argument requires a value (<ADRESS>).\n");}
             try {
-                if (host != "") {reportError( "ERROR: Declared --host <ADRESS> more than one time.\n");return 1;}
-                host = argv[++i];
-                if (DEBUGMODE) {cout << " <" + host + ">";}
+                if (HOST != "") {reportError( "ERROR: Declared --host <ADRESS> more than one time.\n");return 1;}
+                HOST = argv[++i];
+                if (DEBUGMODE) {cout << " <" + HOST + ">";}
             } catch (...) {reportError("ERROR: Invalid --host <ADRESS> (must be a valid Adress).\n");return 1;}
         } else {reportError("Usage: MPanel [--port PORT] [--host ADRESS] [--custom-php PATH] [--custom-web PATH] [--debug]\n");return 1;
         }
@@ -174,14 +174,14 @@ int main(int argc, char* argv[]) {
 
     /* =========== PHP MANAGEMENT ========== */
     if (phpPath == "") {phpPath = "php";}
-    if (host == "") {host = "0.0.0.0";}
+    if (HOST == "") {HOST = "0.0.0.0";}
 
     int phpStatus = std::system((phpPath + " --version >" + nullDevice + " 2>&1").c_str());
     if (phpStatus != 0) {reportError("ERROR: Could not access PHP (is it installed and in PATH?).\nTo use a custom PHP path, use --custom-php <PATH>.");return 1;}
 
     // php -S 0.0.0.0:1234 -t /tmp/.../web/ /tmp/.../web/router.php
-    cout << "Starting server on port :" << PORT << "...\n\n";
-    str command = phpPath + " -S " + host + ":" + std::to_string(PORT) + " -t " + webRoot.string() + " " + (webRoot / "router.php").string();
+    cout << "Starting server on " + HOST + ":" << PORT << "...\n\n";
+    str command = phpPath + " -S " + HOST + ":" + std::to_string(PORT) + " -t " + webRoot.string() + " " + (webRoot / "router.php").string();
 
     int serverStatus = std::system(command.c_str());
     if (webPath == "") {fs::remove_all(tempRoot);}
