@@ -1,4 +1,4 @@
-name: Build on Linux & Windows
+name: Build
 
 env:
   BUILD_TYPE: Release
@@ -7,11 +7,9 @@ on:
   push:
     branches:
       - main
-      - beta
   pull_request:
     branches:
       - main
-      - beta
 
   workflow_dispatch:
 
@@ -20,7 +18,7 @@ permissions:
 
 jobs:
   build-linux:
-    name: Build on Ubuntu
+    name: Linux Build
     runs-on: ubuntu-24.04
 
     steps:
@@ -33,16 +31,19 @@ jobs:
       - name: Build MPanel
         run: bash scripts/linux-build.sh
 
+      - name: Prepare Binary
+        run: cp build/MPanel MPanel-linux-x86_64
+
       - name: Upload Linux Binary
         uses: actions/upload-artifact@v7
         with:
           name: MPanel-linux-x86_64
-          path: build/MPanel
+          path: MPanel-linux-x86_64
           if-no-files-found: error
           retention-days: 14
 
   build-windows:
-    name: Build on Windows
+    name: Windows Build
     runs-on: windows-2025
 
     steps:
@@ -57,10 +58,16 @@ jobs:
         shell: cmd
         run: call scripts\windows-build.bat
 
-      - name: Upload Windows Binary
+      - name: Prepare Binary
+        shell: cmd
+        run: |
+          copy /Y build\MPanel.exe MPanel-windows-x86_64.exe
+          if errorlevel 1 exit /b 1
+
+      - name: Upload Binary
         uses: actions/upload-artifact@v7
         with:
           name: MPanel-windows-x86_64
-          path: build/MPanel.exe
+          path: MPanel-windows-x86_64.exe
           if-no-files-found: error
           retention-days: 14

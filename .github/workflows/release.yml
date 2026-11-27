@@ -12,7 +12,7 @@ env:
 
 jobs:
   build-linux:
-    name: Build Linux release
+    name: Linux Build
     runs-on: ubuntu-24.04
 
     steps:
@@ -44,7 +44,7 @@ jobs:
           retention-days: 1
 
   build-windows:
-    name: Build Windows release
+    name: Windows Build
     runs-on: windows-2025
 
     steps:
@@ -79,7 +79,7 @@ jobs:
           retention-days: 1
 
   release:
-    name: Publish GitHub Release
+    name: Publish Release
     runs-on: ubuntu-24.04
     needs: [build-linux, build-windows]
 
