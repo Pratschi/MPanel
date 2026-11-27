@@ -75,8 +75,8 @@ int main(int argc, char* argv[]) {
 
     /* =========== INITIALIZATION ========== */
 
-    if (VERSION_STATUS == 1) {cout << "MPanel v" + VERSION + "\n"; return 0;}
     if (DEBUGMODE) {cout << "VERSION STATUS: " << std::to_string(VERSION_STATUS) + "\n";}
+    if (VERSION_STATUS == 1) {cout << "MPanel v" + VERSION + "\n"; return 0;}
     cout << "MPanel Service Utility - v" + VERSION + "\n";
     cout << "See https://mpanel.com/ for more information.\n\n";
 
@@ -177,13 +177,16 @@ int main(int argc, char* argv[]) {
     if (HOST == "") {HOST = "0.0.0.0";}
 
     int phpStatus = std::system((phpPath + " --version >" + nullDevice + " 2>&1").c_str());
+    if (DEBUGMODE) {cout << "[DEBUG] PHP Status Check: " + phpPath + " --version >" + nullDevice + " 2>&1\n";}
     if (phpStatus != 0) {reportError("ERROR: Could not access PHP (is it installed and in PATH?).\nTo use a custom PHP path, use --custom-php <PATH>.");return 1;}
 
     // php -S 0.0.0.0:1234 -t /tmp/.../web/ /tmp/.../web/router.php
-    cout << "Starting server on " + HOST + ":" << PORT << "...\n\n";
-    str command = phpPath + " -S " + HOST + ":" + std::to_string(PORT) + " -t " + webRoot.string() + " " + (webRoot / "router.php").string();
+    cout << "Starting server on " + HOST + ":" << PORT << "...\n";
+    str phpCommand = phpPath + " -S " + HOST + ":" + std::to_string(PORT) + " -t " + webRoot.string() + " " + (webRoot / "router.php").string();
+    if (DEBUGMODE) {cout << "[DEBUG] PHP Command: " + phpCommand + "\n";}
 
-    int serverStatus = std::system(command.c_str());
+    cout << "\n";
+    int serverStatus = std::system(phpCommand.c_str());
     if (webPath == "") {fs::remove_all(tempRoot);}
     return serverStatus;
 }
