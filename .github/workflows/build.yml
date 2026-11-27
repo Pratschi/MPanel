@@ -4,13 +4,6 @@ env:
   BUILD_TYPE: Release
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
   workflow_dispatch:
 
 permissions:
@@ -41,6 +34,56 @@ jobs:
         with:
           name: MPanel-linux-x86_64
           path: dist/MPanel-linux-x86_64
+          if-no-files-found: error
+          retention-days: 14
+
+  build-linux-deb:
+    name: Linux DEB Build
+    runs-on: ubuntu-24.04
+    needs: [build-linux]
+
+    steps:
+      - name: Download Linux Binary
+        uses: actions/download-artifact@v4
+        with:
+          name: MPanel-linux-x86_64
+          path: dist
+
+      - name: Build Debian Package
+        run: |
+          set -euo pipefail
+
+          binary="$GITHUB_WORKSPACE/dist/MPanel-linux-x86_64"
+          package_dir="$RUNNER_TEMP/mpanel-package"
+          version_output="$("$binary" --version)"
+          version="${version_output#MPanel v}"
+          package_file="$GITHUB_WORKSPACE/dist/mpanel_${version}_amd64.deb"
+
+          if [[ "$version" == "$version_output" || ! "$version" =~ ^[0-9][A-Za-z0-9.+:~-]*$ ]]; then
+            echo "Could not determine a valid package version from: $version_output" >&2
+            exit 1
+          fi
+
+          mkdir -p "$package_dir/DEBIAN" "$package_dir/usr/local/bin"
+          install -m 0755 "$binary" "$package_dir/usr/local/bin/mpanel"
+
+          cat > "$package_dir/DEBIAN/control" <<EOF
+          Package: mpanel
+          Version: $version
+          Section: utils
+          Priority: optional
+          Architecture: amd64
+          Maintainer: Pratschi <pratschigamer@gmail.com>
+          Description: A Service and App for Servers that allows for their easy management.
+          EOF
+
+          dpkg-deb --build "$package_dir" "$package_file"
+
+      - name: Upload Debian Package
+        uses: actions/upload-artifact@v7
+        with:
+          name: MPanel-linux-deb
+          path: dist/*.deb
           if-no-files-found: error
           retention-days: 14
 
