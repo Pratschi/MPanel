@@ -32,7 +32,9 @@ jobs:
         run: bash scripts/linux-build.sh
 
       - name: Prepare Binary
-        run: cp build/MPanel dist/MPanel-linux-x86_64
+        run: |
+          mkdir -p dist
+          cp build/MPanel dist/MPanel-linux-x86_64
 
       - name: Upload Binary
         uses: actions/upload-artifact@v7
@@ -61,6 +63,7 @@ jobs:
       - name: Prepare Binary
         shell: cmd
         run: |
+          if not exist dist mkdir dist
           copy /Y build\MPanel.exe dist\MPanel-windows-x86_64.exe
           if errorlevel 1 exit /b 1
 
