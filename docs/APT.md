@@ -73,12 +73,12 @@ Description: A Service and App for Servers that allows for their easy management
 ## 5. Building the Package
 Build the package with:
 ```bash
-dpkg-deb --build build/mpanel mpanel_VERSION_amd64.deb
+dpkg-deb --build build/mpanel mpanel-VERSION-linux_debian-amd64.deb
 ```
 
 Add the package to the repository with:
 ```bash
-reprepro -b apt includedeb stable mpanel_VERSION_amd64.deb
+reprepro -b apt includedeb stable mpanel-VERSION-linux_debian-amd64.deb
 ```
 
 ## 6. Adding the Repo

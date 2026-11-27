@@ -14,7 +14,7 @@ if [[ "${1:-}" == "--force-downgrade" ]]; then
 fi
 
 if [[ $# -ne 1 ]]; then
-    die "Usage: $0 [--force-downgrade] /path/to/mpanel_VERSION_amd64.deb"
+    die "Usage: $0 [--force-downgrade] /path/to/mpanel-VERSION-linux_debian-amd64.deb"
 fi
 
 package="$1"

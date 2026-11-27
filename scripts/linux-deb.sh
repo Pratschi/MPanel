@@ -33,7 +33,7 @@ esac
 [[ -n "$version" ]] || die "The MPanel version is empty."
 dpkg --validate-version "$version" || die "Invalid Debian package version: $version"
 
-installed_size="$(du -sk "$package_dir/usr" | cut -f1)"
+installed_size="$(du -sk "$package_root/usr" | cut -f1)"
 
 cat > "$package_root/DEBIAN/control" <<EOF
 Package: mpanel
@@ -46,6 +46,6 @@ Maintainer: Pratschi <pratschigamer@gmail.com>
 Description: A Service and App for Servers that allows for their easy management.
 EOF
 
-output="$PWD/mpanel_${version}_amd64.deb"
+output="$PWD/mpanel-${version}-linux_debian-amd64.deb"
 dpkg-deb --build --root-owner-group "$package_root" "$output"
 printf 'Created %s\n' "$output"
