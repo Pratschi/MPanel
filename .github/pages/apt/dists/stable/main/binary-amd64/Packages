@@ -1,13 +1,13 @@
 Package: mpanel
-Version: 0.2.1
+Version: 0.0.0
 Architecture: amd64
 Maintainer: Pratschi <pratschigamer@gmail.com>
 Priority: optional
 Section: utils
-Filename: pool/main/m/mpanel/mpanel_0.2.1_amd64.deb
-Size: 18440
-SHA256: 5feff01843fdfb84514b2d1febd84086909e792d16fc7399993f1a4aaee420aa
-SHA1: 17548929a3a42fb666af1bcd13c921b965fe1e29
-MD5sum: 09c7d1bcce93b33f446e3f29a22be8fe
-Description: A service and app for easy management of servers.
+Filename: pool/main/m/mpanel/mpanel_0.0.0_amd64.deb
+Size: 18494
+SHA256: 286cbdd0f2a985cfb7d066fe2446178bae185e528576dffd1f9ac0ff938d55e4
+SHA1: 019d16e85b3caa3c67c277593b218179f5d072f0
+MD5sum: f2207f068af1a5b03eb6f668dd1e33eb
+Description: A Service and App for Servers that allows for their easy management.
 

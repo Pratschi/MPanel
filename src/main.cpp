@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
     using std::cout;
     typedef std::string str;
 
-    str const VERSION = "0.3.1";
+    str const VERSION = "0.3.0";
 
     int DEBUGMODE = false;
     int VERSION_STATUS = 0;

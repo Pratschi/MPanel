@@ -5,35 +5,35 @@ Origin: MPanel
 Label: MPanel
 Suite: stable
 Codename: stable
-Date: Fri, 27 Nov 2026 11:33:03 UTC
+Date: Fri, 27 Nov 2026 14:38:52 UTC
 Architectures: amd64
 Components: main
 Description: MPanel APT repository
 MD5Sum:
- 6914a68524fe3a18c3c200d2ccbf6b62 421 main/binary-amd64/Packages
- 9f5fb09856164a0e941443391d8c8613 322 main/binary-amd64/Packages.gz
+ 174e334b64b663d284d40ed516bf4729 440 main/binary-amd64/Packages
+ c0bc92f7dbfe48ba722358172bd80ebc 335 main/binary-amd64/Packages.gz
  4a804ad139e59eaa255fa37a871adf64 116 main/binary-amd64/Release
 SHA1:
- ff80395f691d0562296bd0dce0570bb63a331213 421 main/binary-amd64/Packages
- bb113f34edf6e1f045eae72c00f6e71ace55f3b6 322 main/binary-amd64/Packages.gz
+ 8cae4568ad360c5619dd0c425e1ccc378902ce29 440 main/binary-amd64/Packages
+ 2bd677c857c87cff599a457d8b5ab63073303244 335 main/binary-amd64/Packages.gz
  d8d39bd0e466c589bd6e91780abc157182e98f73 116 main/binary-amd64/Release
 SHA256:
- e4aaa6cc270ef567845f4de20d2c8ca399c4c1454c4d3424cb0db9ee9e67112f 421 main/binary-amd64/Packages
- a9a306b9a041334604d83c18b1d86a510971bf9e51214f94e837771d386e82f6 322 main/binary-amd64/Packages.gz
+ d74623bb32a3bf7e73daf4aed2882734d170d42bb9a2d988fc9f0804bdfd4281 440 main/binary-amd64/Packages
+ 2f905b57290193fbb060600970f9d21350b370a0a7f85accb309f60cd65a2500 335 main/binary-amd64/Packages.gz
  57dc536fb167922bfe2d562a7bc945c3c4ced65a3c96ab34f7d4cb3f593dba1e 116 main/binary-amd64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEEcjzxLbP+FhXpiybkXJbmFGgEmR0FAmsJam8ACgkQXJbmFGgE
-mR1upxAAlXnap+WksXat4B9hrLQhiRHBBHdqxibjExzsKTNwFfJn3lGL6HbGlkbo
-c7PzakKg84xC4Yg9x/bdXRq38oW7sqd1rzXe9nQS2qxGsFz1hCs92TPBGs0Ddjzj
-ssbD1yCNXOzG6klB5Yk2lXtnsUl9KOF6iLXe549XaDRmdWbR6eu7RvDNqEMTsIRc
-OYxVL1Kda9OjANNRPEo52NW9xqf/vJsN0Nh67a9bZEl8ks4f+BqF2MEGBXIcIrPr
-lx/1vCwIw1RgegmBt2vwdB1LGdP5siVAPRlFzfSA057jeTAkygeLB1BoyGZ63A7F
-8rlFiTWjxi1PlDPAJO40b6qM0b+kNSz3PScyTpPCk+zdl4filJ/7xGjiGZ37twmN
-e6HqLK845VY9QykjqqYZIvnLS3d+1A5XLOt1LA0EI20glLHV7+UD0EdA0zoBlLFu
-0iYGOic15zsacAf6q+LFi5pvqisCI0lIQa1tVap/dlG31UxVONTChHwFhsn6LXiq
-QKQS7+JKFsqvi1p8OQX8+fVGtPRkeXOspuZQz4TJrjXOVekcbvrvxyfereRFS067
-9wKN7KebUS5MTSdbtvz0bVjeSiN2PXtM/ln6LZueOgfzRmB2VaJBktVrHcdBPaaz
-HxMj6n8UBQHZikLD8OHWd1SvTGhegp6ZZNIPHvlq5Ev0FK/aTuA=
-=R4F5
+iQIzBAEBCgAdFiEEcjzxLbP+FhXpiybkXJbmFGgEmR0FAmsJlfwACgkQXJbmFGgE
+mR3r2BAAp7xi/31HE/sKmPHGav4vPQXHxBeO577RTPD/IaCgWfQoWWsfdCwKuk1Q
+Tp3xPx03tRv3Di35qfGze4FVxD8mqk30DKK7D+9w12uaNpthrChmGPXEJR1cBKpY
+9JNCvI3WL8235X+exDAgKEdryhTS932DAIXDqip4iYAX0XqYutNwSaKMoo7UD4Vt
+hHk3JiZOzKbRZu/xj48f6yxRXkaAyKkzUerpJu3hNLOhhCLhg+Ej6OGe5SCXe9Kt
+9bm3GBJHguYHLnGxK6pIGY/TbAUeQQKwohWG45EdzzVSTu0qAn+42rDcRrbLMX/Q
+WbMWevD6wzXbZWP/VxRhcFDsmhY6VitKiLjWtBsy2gnAlY2olcldstlxXhdTdsUG
+jqGSU+X9MP+0ZLY6X9P6qih440YBJcm2W8B68Xj/b2lEpDQvirr/uPPTTIk9t2Mv
+FIizviPe9HfnNo6V8sTgp1rBAFgbiEWHmywDUT6pPieokDMjPglBrVla2kkJcLgT
+b5L3zZyK8mtQlF3ExKSbdojMxFXyiNm7wONN3p99hrItqa52tbgtXC650xUxcwmU
+02YYNeqFhs4YWo9OS3grXs2v7WkvNaAqThIgEO9cTmNrv+cgnQyRJZcCcoFAUYqE
+t9IOHDDuul8vHFoVUojsfxITk4+UT8y9+dbbjAEVjlLIRqihCpU=
+=JqXs
 -----END PGP SIGNATURE-----
