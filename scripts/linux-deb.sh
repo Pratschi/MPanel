@@ -33,12 +33,15 @@ esac
 [[ -n "$version" ]] || die "The MPanel version is empty."
 dpkg --validate-version "$version" || die "Invalid Debian package version: $version"
 
+installed_size="$(du -sk "$package_dir/usr" | cut -f1)"
+
 cat > "$package_root/DEBIAN/control" <<EOF
 Package: mpanel
 Version: $version
 Section: utils
 Priority: optional
 Architecture: amd64
+Installed-Size: $installed_size
 Maintainer: Pratschi <pratschigamer@gmail.com>
 Description: A Service and App for Servers that allows for their easy management.
 EOF
